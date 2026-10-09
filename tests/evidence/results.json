@@ -1,0 +1,193 @@
+{
+  "testedRevision": {
+    "userscriptSha256": "cfb867998297e17bb678d5f95cf888cb08935c0ea83f05fb9f18e638a0cb2d0c",
+    "e2eSha256": "1e50ee1dbbcab66351ccd84d1d42785be791c380882d31d4a87fc3160b85a44d"
+  },
+  "setup": {
+    "url": "https://github.com/tadoku/tadoku/pull/1418",
+    "browser": "T3 collaborative browser (Chromium)",
+    "mockedBoundaries": "None; real GitHub DOM, asset loading, and video playback",
+    "unverifiedBoundaries": [
+      "Userscript-manager installation/injection",
+      "Private PR authentication",
+      "Firefox/Safari",
+      "Image diff and embedded video variants outside the example PR"
+    ]
+  },
+  "commands": [
+    "node --check github-pr-media-preview.user.js",
+    "node --check tests/live.e2e.js",
+    "preview_navigate({url: 'https://github.com/tadoku/tadoku/pull/1418'})",
+    "preview_evaluate({expression: contentsOf('github-pr-media-preview.user.js').trim()})",
+    "preview_evaluate({expression: contentsOf('tests/live.e2e.js').trim(), awaitPromise: true})",
+    "Repeat the browser suite after preview_resize({mode:'freeform',width:375,height:812})"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "boundaries": "Live GitHub DOM and real asset loading/playback. Userscript-manager injection/installation, private PR authentication, and other browser engines are not covered.",
+    "passed": 14,
+    "results": [
+      {
+        "name": "Inline screenshot loads, zooms, closes, and restores scroll/focus",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless recording loads and really plays; closing stops playback",
+        "result": "PASS"
+      },
+      {
+        "name": "Previous/next traverse unique images and recordings and stop at both ends",
+        "result": "PASS"
+      },
+      {
+        "name": "Left/right arrow keys navigate previews from dialog controls",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Filtered list",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Keyboard focus",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Invalid date",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Empty day",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Other viewer",
+        "result": "PASS"
+      },
+      {
+        "name": "Newly inserted, generically labelled recording falls back from image to video",
+        "result": "PASS"
+      },
+      {
+        "name": "Modified clicks and ordinary links keep native navigation",
+        "result": "PASS"
+      },
+      {
+        "name": "Media clicks outside PR routes are not intercepted",
+        "result": "PASS"
+      },
+      {
+        "name": "Outside click dismisses the dialog",
+        "result": "PASS"
+      },
+      {
+        "name": "Missing media shows recovery link instead of navigating",
+        "result": "PASS"
+      }
+    ],
+    "total": 14,
+    "url": "https://github.com/tadoku/tadoku/pull/1418"
+  },
+  "narrow": {
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "boundaries": "Live GitHub DOM and real asset loading/playback. Userscript-manager injection/installation, private PR authentication, and other browser engines are not covered.",
+    "passed": 14,
+    "results": [
+      {
+        "name": "Inline screenshot loads, zooms, closes, and restores scroll/focus",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless recording loads and really plays; closing stops playback",
+        "result": "PASS"
+      },
+      {
+        "name": "Previous/next traverse unique images and recordings and stop at both ends",
+        "result": "PASS"
+      },
+      {
+        "name": "Left/right arrow keys navigate previews from dialog controls",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Filtered list",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Keyboard focus",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Invalid date",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Empty day",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Other viewer",
+        "result": "PASS"
+      },
+      {
+        "name": "Newly inserted, generically labelled recording falls back from image to video",
+        "result": "PASS"
+      },
+      {
+        "name": "Modified clicks and ordinary links keep native navigation",
+        "result": "PASS"
+      },
+      {
+        "name": "Media clicks outside PR routes are not intercepted",
+        "result": "PASS"
+      },
+      {
+        "name": "Outside click dismisses the dialog",
+        "result": "PASS"
+      },
+      {
+        "name": "Missing media shows recovery link instead of navigating",
+        "result": "PASS"
+      }
+    ],
+    "total": 14,
+    "url": "https://github.com/tadoku/tadoku/pull/1418"
+  },
+  "keyboardAndInteraction": {
+    "realArrowKeysAndNextClick": {
+      "right": "3 / 7 \u2014 Keyboard focus",
+      "left": "2 / 7 \u2014 Filtered list",
+      "nextButton": "3 / 7 \u2014 Keyboard focus",
+      "result": "PASS"
+    },
+    "escapeFromImageAfterNavigation": {
+      "closed": true,
+      "focus": "Filtered list",
+      "scrollUnlocked": true
+    },
+    "videoControlFocusAndSeekKeepsGalleryPosition": {
+      "control": "VIDEO",
+      "inside": true,
+      "position": "1 / 7"
+    },
+    "escapeFromFocusedVideoControls": {
+      "closed": true,
+      "focus": "Recording",
+      "scrollUnlocked": true
+    }
+  },
+  "verificationNotes": [
+    "Saved screenshots were visually inspected. The preview capture renders the narrow viewport twice in a wide capture; the page measured 375\u00d7812 CSS pixels and both the gallery suite and real keyboard checks passed at that viewport.",
+    "The fit-area assertion failed for intended clipping behavior before the layout fix, then passed after it."
+  ],
+  "screenshots": [
+    "desktop-image.png",
+    "narrow-video.png"
+  ],
+  "screenshotAvailability": "Captured, visually inspected, and retained locally; PNG captures are excluded from the repository."
+}
