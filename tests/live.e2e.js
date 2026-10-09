@@ -108,14 +108,14 @@
       assert(intercepted === false && !dialog().open, 'Native click was intercepted');
     }
   });
-  await run('Media clicks outside PR routes are not intercepted', async () => {
+  await run('Media clicks outside issue and PR routes are not intercepted', async () => {
     history.replaceState(null, '', '/tadoku/tadoku');
     const target = link('Recording');
     let intercepted;
     target.addEventListener('click', event => { intercepted = event.defaultPrevented; event.preventDefault(); }, {once:true});
     target.click();
     history.replaceState(null, '', initialURL);
-    assert(intercepted === false && !dialog().open, 'Non-PR route intercepted');
+    assert(intercepted === false && !dialog().open, 'Unrelated repository route intercepted');
   });
   await run('Outside click dismisses the dialog', async () => {
     await preview(link('Filtered list'), 'image');

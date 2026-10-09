@@ -1,8 +1,11 @@
 // ==UserScript==
 // @name         GitHub PR Media Preview
 // @namespace    github-pr-media-preview
-// @version      1.0.0
-// @description  Preview pull-request images and recordings in a modal without leaving GitHub.
+// @version      1.1.0
+// @description  Preview issue and pull-request images and recordings in a modal without leaving GitHub.
+// @homepageURL  https://github.com/antonve/github-pr-media-preview
+// @updateURL    https://raw.githubusercontent.com/antonve/github-pr-media-preview/main/github-pr-media-preview.user.js
+// @downloadURL  https://raw.githubusercontent.com/antonve/github-pr-media-preview/main/github-pr-media-preview.user.js
 // @match        https://github.com/*
 // @run-at       document-start
 // @grant        none
@@ -12,7 +15,7 @@
 (() => {
   'use strict';
 
-  // Run on all GitHub pages so navigation into a PR without a reload still works.
+  // Run on all GitHub pages so navigation into an issue or PR without a reload still works.
   const installed = '__githubPrMediaPreviewInstalled';
   if (window[installed]) return;
   window[installed] = true;
@@ -298,7 +301,7 @@
 
   document.addEventListener('click', (event) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    if (!/^\/[^/]+\/[^/]+\/pull\/\d+(?:\/|$)/.test(location.pathname)) return;
+    if (!/^\/[^/]+\/[^/]+\/(?:pull|issues)\/\d+(?:\/|$)/.test(location.pathname)) return;
     if (ui && event.composedPath().includes(ui.host)) return;
     if (!(event.target instanceof Element)) return;
     const item = mediaFor(event.target);

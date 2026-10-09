@@ -1,0 +1,306 @@
+{
+  "version": "1.1.0",
+  "testedSources": {
+    "github-pr-media-preview.user.js": "49011994c079717de560c34a8f66217910298e5e36042b68dc5f7a95ee82c4a6",
+    "tests/live.e2e.js": "6ac38a15589120f20d2bb6e9a75c0f6b0e2961aab3ed4d2189325b68a3515ae8",
+    "tests/issues.e2e.js": "c80e7ed9b0af9c4a247822c4d00a7f41a67697f58cc01177d3b4ee5f9ddc5afe"
+  },
+  "browser": "T3 collaborative browser (Chromium)",
+  "commands": [
+    "node --check github-pr-media-preview.user.js",
+    "node --check tests/live.e2e.js",
+    "node --check tests/issues.e2e.js",
+    "preview_navigate({url:'https://github.com/tadoku/tadoku/issues/798'})",
+    "preview_evaluate({expression:contentsOf('github-pr-media-preview.user.js').trim()})",
+    "preview_evaluate({expression:contentsOf('tests/issues.e2e.js').trim(),awaitPromise:true})",
+    "Repeat the issue suite after preview_resize({mode:'freeform',width:375,height:812})",
+    "Open https://github.com/tadoku/tadoku/pull/1418, inject the userscript, and evaluate tests/live.e2e.js at both viewport sizes"
+  ],
+  "issueDesktop": {
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "boundaries": "Live GitHub issue markup and screenshot; temporary local comment/attachment fixtures use real GitHub assets, including the recording from PR #1418. No server-side comments are created. Extension installation, private issues, and non-Chromium browsers are not covered.",
+    "passed": 8,
+    "results": [
+      {
+        "name": "Live issue screenshot previews, zooms, and restores focus and scrolling",
+        "result": "PASS"
+      },
+      {
+        "name": "New issue comment attachment previews without reinitializing the script",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless recording in an issue comment plays and stops on close",
+        "result": "PASS"
+      },
+      {
+        "name": "Issue gallery deduplicates the screenshot and its attachment link",
+        "result": "PASS"
+      },
+      {
+        "name": "Escape dismisses an issue preview",
+        "result": "PASS"
+      },
+      {
+        "name": "Modified issue attachment clicks retain native behavior",
+        "result": "PASS"
+      },
+      {
+        "name": "Issue lists, creation forms, and unrelated repository routes remain untouched",
+        "result": "PASS"
+      },
+      {
+        "name": "Issue anchors and query strings preserve image previews",
+        "result": "PASS"
+      }
+    ],
+    "total": 8,
+    "url": "https://github.com/tadoku/tadoku/issues/798"
+  },
+  "issueNarrow": {
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "url": "https://github.com/tadoku/tadoku/issues/798",
+    "results": [
+      {
+        "name": "Live issue screenshot previews, zooms, and restores focus and scrolling",
+        "result": "PASS"
+      },
+      {
+        "name": "New issue comment attachment previews without reinitializing the script",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless recording in an issue comment plays and stops on close",
+        "result": "PASS"
+      },
+      {
+        "name": "Issue gallery deduplicates the screenshot and its attachment link",
+        "result": "PASS"
+      },
+      {
+        "name": "Escape dismisses an issue preview",
+        "result": "PASS"
+      },
+      {
+        "name": "Modified issue attachment clicks retain native behavior",
+        "result": "PASS"
+      },
+      {
+        "name": "Issue lists, creation forms, and unrelated repository routes remain untouched",
+        "result": "PASS"
+      },
+      {
+        "name": "Issue anchors and query strings preserve image previews",
+        "result": "PASS"
+      }
+    ],
+    "passed": 8,
+    "total": 8,
+    "boundaries": "Live GitHub issue markup and screenshot; temporary local comment/attachment fixtures use real GitHub assets, including the recording from PR #1418. No server-side comments are created. Extension installation, private issues, and non-Chromium browsers are not covered."
+  },
+  "prDesktop": {
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "url": "https://github.com/tadoku/tadoku/pull/1418",
+    "results": [
+      {
+        "name": "Inline screenshot loads, zooms, closes, and restores scroll/focus",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless recording loads and really plays; closing stops playback",
+        "result": "PASS"
+      },
+      {
+        "name": "Previous/next traverse unique images and recordings and stop at both ends",
+        "result": "PASS"
+      },
+      {
+        "name": "Left/right arrow keys navigate previews from dialog controls",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Filtered list",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Keyboard focus",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Invalid date",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Empty day",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Other viewer",
+        "result": "PASS"
+      },
+      {
+        "name": "Newly inserted, generically labelled recording falls back from image to video",
+        "result": "PASS"
+      },
+      {
+        "name": "Modified clicks and ordinary links keep native navigation",
+        "result": "PASS"
+      },
+      {
+        "name": "Media clicks outside issue and PR routes are not intercepted",
+        "result": "PASS"
+      },
+      {
+        "name": "Outside click dismisses the dialog",
+        "result": "PASS"
+      },
+      {
+        "name": "Missing media shows recovery link instead of navigating",
+        "result": "PASS"
+      }
+    ],
+    "passed": 14,
+    "total": 14,
+    "boundaries": "Live GitHub DOM and real asset loading/playback. Userscript-manager injection/installation, private PR authentication, and other browser engines are not covered."
+  },
+  "prNarrow": {
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "url": "https://github.com/tadoku/tadoku/pull/1418",
+    "results": [
+      {
+        "name": "Inline screenshot loads, zooms, closes, and restores scroll/focus",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless recording loads and really plays; closing stops playback",
+        "result": "PASS"
+      },
+      {
+        "name": "Previous/next traverse unique images and recordings and stop at both ends",
+        "result": "PASS"
+      },
+      {
+        "name": "Left/right arrow keys navigate previews from dialog controls",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Filtered list",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Keyboard focus",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Invalid date",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Empty day",
+        "result": "PASS"
+      },
+      {
+        "name": "Extensionless image attachment: Other viewer",
+        "result": "PASS"
+      },
+      {
+        "name": "Newly inserted, generically labelled recording falls back from image to video",
+        "result": "PASS"
+      },
+      {
+        "name": "Modified clicks and ordinary links keep native navigation",
+        "result": "PASS"
+      },
+      {
+        "name": "Media clicks outside issue and PR routes are not intercepted",
+        "result": "PASS"
+      },
+      {
+        "name": "Outside click dismisses the dialog",
+        "result": "PASS"
+      },
+      {
+        "name": "Missing media shows recovery link instead of navigating",
+        "result": "PASS"
+      }
+    ],
+    "passed": 14,
+    "total": 14,
+    "boundaries": "Live GitHub DOM and real asset loading/playback. Userscript-manager injection/installation, private PR authentication, and other browser engines are not covered."
+  },
+  "nativeKeyboardEscape": {
+    "closed": true,
+    "scrollUnlocked": true,
+    "focusRestored": true
+  },
+  "screenshot": {
+    "file": "issue-v1.1.0-desktop.png",
+    "availability": "Saved, visually inspected, and retained locally; generated PNG captures are excluded from commits."
+  },
+  "beforeFix": {
+    "commit": "89b9ffe543657abf1c7deb1333915f7d1be90aa4",
+    "userscriptSha256": "cfb867998297e17bb678d5f95cf888cb08935c0ea83f05fb9f18e638a0cb2d0c",
+    "boundaries": "Live GitHub issue markup and screenshot; temporary local comment/attachment fixtures use real GitHub assets, including the recording from PR #1418. No server-side comments are created. Extension installation, private issues, and non-Chromium browsers are not covered.",
+    "passed": 2,
+    "results": [
+      {
+        "error": "Error: Issue media click did not open a modal",
+        "name": "Live issue screenshot previews, zooms, and restores focus and scrolling",
+        "result": "FAIL"
+      },
+      {
+        "error": "Error: Issue media click did not open a modal",
+        "name": "New issue comment attachment previews without reinitializing the script",
+        "result": "FAIL"
+      },
+      {
+        "error": "Error: Issue media click did not open a modal",
+        "name": "Extensionless recording in an issue comment plays and stops on close",
+        "result": "FAIL"
+      },
+      {
+        "error": "Error: Issue media click did not open a modal",
+        "name": "Issue gallery deduplicates the screenshot and its attachment link",
+        "result": "FAIL"
+      },
+      {
+        "error": "Error: Issue media click did not open a modal",
+        "name": "Escape dismisses an issue preview",
+        "result": "FAIL"
+      },
+      {
+        "name": "Modified issue attachment clicks retain native behavior",
+        "result": "PASS"
+      },
+      {
+        "name": "Issue lists, creation forms, and unrelated repository routes remain untouched",
+        "result": "PASS"
+      },
+      {
+        "error": "Error: Issue URL with a query and anchor did not preview",
+        "name": "Issue anchors and query strings preserve image previews",
+        "result": "FAIL"
+      }
+    ],
+    "total": 8,
+    "url": "https://github.com/tadoku/tadoku/issues/798"
+  },
+  "unverifiedBoundaries": [
+    "Tampermonkey update/installation of v1.1.0",
+    "Private issue authentication",
+    "Firefox and Safari"
+  ],
+  "fixtureDetails": "Issue #798 supplies a real screenshot and current GitHub issue DOM. Recording and duplicate attachment tests add a temporary local comment section that points at real GitHub media. No GitHub comments are posted; no media requests or decoders are mocked."
+}
